@@ -6,7 +6,7 @@
   byte TO[]={ 0,0,16,16,31,16,16,0,0,14,17,17,14,0,0 };
   byte IITR[]={9,15,9,0,9,15,9,0,8,15,8,31,20,10,1};
 
-//Arrays of each alphabets
+//Arrays of each alphabets to display them on 8X8 LED Matrix
   byte A[]= {0,31, 36, 68, 36, 31,0,0};//A
   byte B[]={0,127, 73, 73, 73, 54,0,0};//B
   byte C[]={0,62, 65, 65, 65, 34,0,0};//C
@@ -34,7 +34,7 @@
   byte Y[]={0,96, 16, 15, 16, 96,0,0};//Y
   byte Z[]={0,67, 69, 73, 81, 97,0,0};//Z
   
-
+//For 5X15 Adaptive display
 const int rowPins[] = {0,1,2, 3, 4, 5, 6,7,8,9,10,11,12,13,14};
 const int columnPins[] = {19,18,17,16,15};
 
@@ -50,6 +50,7 @@ pinMode(columnPins[i], OUTPUT);
 digitalWrite(columnPins[i], HIGH);
 }
 }
+
 
 void loop()
 {  
@@ -75,7 +76,8 @@ if(pixel == 1)
 {
 digitalWrite(columnPins[column], LOW); // connect column to Gnd
 }
-delayMicroseconds(300); // a small delay for each LED
+delayMicroseconds(300); // a small delay for each LED with this corresponding LED of the respective word will glow as fast as such that
+                         // it appears as a particular letter to human eye
 digitalWrite(columnPins[column], HIGH); // disconnect column from Gnd
 }
 digitalWrite(rowPins[row], LOW); // disconnect LEDs of that row from +5 volts
